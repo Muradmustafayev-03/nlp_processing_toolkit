@@ -15,7 +15,7 @@ def filter_tokens(text: str) -> str:
     :return: text without punctuation and stop words
     """
     doc = nlp(text)
-    filtered = [token.text for token in doc if not token.is_stop and not token.is_punct]
+    filtered = [token.lower_ for token in doc if not token.is_stop and not token.is_punct]
     return ' '.join(filtered)
 
 

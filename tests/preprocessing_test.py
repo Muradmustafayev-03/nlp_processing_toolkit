@@ -18,11 +18,11 @@ FILTERED = [
 ]
 
 LEMMAS = [
-    'The sun set over the horizon, cast a golden hue on the tranquil sea.',
-    'Bird chirp merrily in the treetop, herald the arrival of a new day.',
-    'With a gentle breeze rustle the leaf, the scent of bloom flower fill the air.',
-    'Laughter echo through the park as child play game and enjoy the warm summer afternoon.',
-    'In the distance, a faint rumble of thunder warn of an approach storm.'
+    'the sun set over the horizon , cast a golden hue on the tranquil sea .',
+    'bird chirp merrily in the treetop , herald the arrival of a new day .',
+    'with a gentle breeze rustle the leaf , the scent of bloom flower fill the air .',
+    'laughter echo through the park as child play game and enjoy the warm summer afternoon .',
+    'in the distance , a faint rumble of thunder warn of an approach storm .'
 ]
 
 LEMMAS_FILTERED = [

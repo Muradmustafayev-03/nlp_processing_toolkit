@@ -74,5 +74,23 @@ class TestExtractLemma(unittest.TestCase):
         self.assertEqual(LEMMAS, result)
 
 
+class TestFilterAndExtractLemma(unittest.TestCase):
+    def test_sentences(self):
+        result = [filter_and_extract_lemma(sentence) for sentence in SENTENCES]
+        self.assertEqual(LEMMAS_FILTERED, result)
+
+    def test_filtered(self):
+        result = [filter_and_extract_lemma(sentence) for sentence in FILTERED]
+        self.assertEqual(LEMMAS_FILTERED, result)
+
+    def test_lemmas(self):
+        result = [filter_and_extract_lemma(sentence) for sentence in LEMMAS]
+        self.assertEqual(LEMMAS_FILTERED, result)
+
+    def test_punctuation(self):
+        for case in PUNCTUATION:
+            self.assertEqual('', filter_tokens(case))
+
+
 if __name__ == '__main__':
     unittest.main()

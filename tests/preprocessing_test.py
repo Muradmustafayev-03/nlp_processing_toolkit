@@ -47,6 +47,10 @@ class TestFilterTokens(unittest.TestCase):
         result = [filter_tokens(sentence) for sentence in SENTENCES]
         self.assertEqual(FILTERED, result)
 
+    def test_filtered(self):
+        result = [filter_tokens(sentence) for sentence in FILTERED]
+        self.assertEqual(FILTERED, result)
+
     def test_lemmas(self):
         result = [filter_tokens(sentence) for sentence in LEMMAS]
         self.assertEqual(LEMMAS_FILTERED, result)
@@ -54,6 +58,20 @@ class TestFilterTokens(unittest.TestCase):
     def test_punctuation(self):
         for case in PUNCTUATION:
             self.assertEqual('', filter_tokens(case))
+
+
+class TestExtractLemma(unittest.TestCase):
+    def test_sentences(self):
+        result = [extract_lemma(sentence) for sentence in SENTENCES]
+        self.assertEqual(LEMMAS, result)
+
+    def test_filtered(self):
+        result = [extract_lemma(sentence) for sentence in FILTERED]
+        self.assertEqual(LEMMAS_FILTERED, result)
+
+    def test_lemmas(self):
+        result = [extract_lemma(sentence) for sentence in LEMMAS]
+        self.assertEqual(LEMMAS, result)
 
 
 if __name__ == '__main__':

@@ -33,6 +33,28 @@ LEMMAS_FILTERED = [
     'distance faint rumble thunder warn approach storm'
 ]
 
+PUNCTUATION = [
+    '!!!???!!!????!!!!!!!??????!!!!!!',
+    '!&*()',
+    ',. ;: " ? []',
+    '[].{}()'
+    ''
+]
+
+
+class TestFilterTokens(unittest.TestCase):
+    def test_sentences(self):
+        result = [filter_tokens(sentence) for sentence in SENTENCES]
+        self.assertEqual(FILTERED, result)
+
+    def test_lemmas(self):
+        result = [filter_tokens(sentence) for sentence in LEMMAS]
+        self.assertEqual(LEMMAS_FILTERED, result)
+
+    def test_punctuation(self):
+        for case in PUNCTUATION:
+            self.assertEqual('', filter_tokens(case))
+
 
 if __name__ == '__main__':
     unittest.main()

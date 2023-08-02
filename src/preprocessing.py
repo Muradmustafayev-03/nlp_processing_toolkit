@@ -2,8 +2,10 @@ import pandas as pd
 import numpy as np
 import spacy
 
-# run 'python -m spacy download en_core_web_sm' in the terminal before running this line
-nlp = spacy.load("en_core_web_sm")
+model_name = "en_core_web_sm"
+if model_name not in spacy.util.get_installed_models():
+    spacy.cli.download(model_name)
+nlp = spacy.load(model_name)
 
 
 def filter_tokens(text: str) -> str:

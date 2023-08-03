@@ -5,7 +5,7 @@ import spacy
 model_name = "en_core_web_sm"
 if model_name not in spacy.util.get_installed_models():
     spacy.cli.download(model_name)
-nlp = spacy.load(model_name)
+nlp = spacy.load(model_name, disable=['parser', 'ner'])
 
 
 def filter_tokens(text: str) -> str:

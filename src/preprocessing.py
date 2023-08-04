@@ -98,3 +98,13 @@ def one_hot_decode(encoded: np.array, classes: pd.Series) -> np.array:
     """
     classes = sorted(classes.unique().tolist())
     return np.array([classes[np.argmax(one_hot)] for one_hot in encoded])
+
+
+def enumerate_encode(column: pd.Series) -> np.array:
+    """
+    Converts a data series of classes into enumerated array
+    :param column: the data Series or DataFrame column to encode
+    :return: 2D array with encoded data
+    """
+    classes = sorted(column.unique().tolist())
+    return np.array([classes.index(value) for value in column])

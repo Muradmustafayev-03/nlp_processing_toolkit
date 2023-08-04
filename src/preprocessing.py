@@ -108,3 +108,14 @@ def enumerate_encode(column: pd.Series) -> np.array:
     """
     classes = sorted(column.unique().tolist())
     return np.array([classes.index(value) for value in column])
+
+
+def enumerate_decode(encoded: np.array, classes: pd.Series) -> np.array:
+    """
+    Decodes enumerated values according to existing classes
+    :param encoded: enumerated numpy array, either from enumerate_encode function or from the model output
+    :param classes: classes column of the source dataset
+    :return: numpy array with the name of the class corresponding to each enumerated value
+    """
+    classes = sorted(classes.unique().tolist())
+    return np.array([classes[value] for value in encoded])

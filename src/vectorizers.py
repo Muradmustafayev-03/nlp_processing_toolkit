@@ -7,7 +7,7 @@ import numpy as np
 
 class ExtendedTokenizer(Tokenizer):
     """
-    Extended tokenizer with additional methods for converting texts to padded sequences and back.
+    Extended keras sparse tokenizer with additional methods for converting texts to padded sequences and back.
     """
 
     def __init__(self, **kwargs):
@@ -34,13 +34,18 @@ class ExtendedTokenizer(Tokenizer):
 
 class Word2VecVectorizer(Word2Vec):
     """
-    Extended Word2Vec model with additional methods.
+    Extended Word2Vec model with additional methods to vectorize sentences.
     """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
     def vectorize_sentence(self, sentence: str) -> np.ndarray:
+        """
+        Vectorize a sentence.
+        :param sentence: sentence to vectorize
+        :return: vectorized sentence
+        """
         vectorized = [self.wv[word] for word in sentence.split(' ') if word in self.wv]
         if not vectorized:
             # If none of the words are in the vocabulary, return zeros
@@ -48,4 +53,9 @@ class Word2VecVectorizer(Word2Vec):
         return np.mean(vectorized, axis=0)
 
     def vectorize_sentences(self, sentences: pd.Series) -> np.ndarray:
+        """
+        Vectorize a series of sentences.
+        :param sentences: sentences to vectorize
+        :return: vectorized sentences
+        """
         return np.array([self.vectorize_sentence(sentence) for sentence in sentences.values])
